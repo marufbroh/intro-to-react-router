@@ -1,12 +1,17 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import User from '../User/User';
 
 const Users = () => {
-    const data = useLoaderData()
-    console.log(data);
+    const users = useLoaderData()
     return (
         <div>
-            <h3>These are my Users</h3>
+            <h3>These are my Users {users.length}</h3>
+            <div style={{display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px'}}>
+                {
+                    users.map((user) => <User user={user} key={user.id} />)
+                }
+            </div>
         </div>
     );
 };
